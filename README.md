@@ -1,8 +1,8 @@
 # try-lacinia
 
-Experiment [walmartlabs/lacinia](https://github.com/walmartlabs/lacinia) library, a GraphQL implementation in pure Clojure.
+Playing with [walmartlabs/lacinia](https://github.com/walmartlabs/lacinia) library, a GraphQL implementation in pure Clojure.
 
-See [blog post](https://kipalog.com/posts/try-lacinia).
+See [blog post](https://kipalog.com/posts/try-lacinia) for detail.
 
 ## Usage
 
