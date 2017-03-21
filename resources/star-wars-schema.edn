@@ -1,25 +1,38 @@
-{:enums
- {:episode
-  {:description "The episodes of the original Star Wars trilogy."
-   :values      ["NEWHOPE" "EMPIRE" "JEDI"]}}
+{:enums      {
+              :episode {:description "The episodes of the original Star Wars trilogy."
+                        :values      ["NEWHOPE" "EMPIRE" "JEDI"]}}
 
- :objects
- {:droid
-  {:fields {:id                {:type Int}
-            :name              {:type String}
-            :appears_in        {:type (list :episode)}
-            :primary_functions {:type (list String)}}}
+ :interfaces {
+              :character {:fields {:id         {:type Int}
+                                   :name       {:type String}
+                                   :appears_in {:type (list :episode)}
+                                   :friends    {:type (list :character)}}}}
+ :objects    {
+              :droid {:implements [:character]
+                      :fields     {:id               {:type Int}
+                                   :name             {:type String}
+                                   :appears_in       {:type (list :episode)}
+                                   :friends          {:type    (list :character)
+                                                      :resolve :resolve-friends}
+                                   :primary_function {:type (list String)}}}
 
-  :human
-  {:fields {:id          {:type Int}
-            :name        {:type String}
-            :home_planet {:type String}
-            :appears_in  {:type (list :episode)}}}}
+              :human {:implements [:character]
+                      :fields     {:id          {:type Int}
+                                   :name        {:type String}
+                                   :appears_in  {:type (list :episode)}
+                                   :friends     {:type    (list :character)
+                                                 :resolve :resolve-friends}
+                                   :home_planet {:type String}}}}
 
- :queries
- {:hero  {:type    (non-null :human)
-          :args    {:episode {:type :episode}}
-          :resolve :get-hero}
-  :droid {:type    :droid
-          :args    {:id {:type String :default-value "2001"}}
-          :resolve :get-droid}}}
+ :queries    {
+              :hero  {:type    (non-null :character)
+                      :args    {:episode {:type :episode}}
+                      :resolve :resolve-hero}
+              :human {:type    (non-null :human)
+                      :args    {:id {:type          Int
+                                     :default-value 1001}}
+                      :resolve :resolve-human}
+              :droid {:type    :droid
+                      :args    {:id {:type          Int
+                                     :default-value 2001}}
+                      :resolve :resolve-droid}}}

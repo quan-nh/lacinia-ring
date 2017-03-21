@@ -9,6 +9,8 @@
   (-> (io/resource "star-wars-schema.edn")
       slurp
       edn/read-string
-      (attach-resolvers {:get-hero  db/get-hero
-                         :get-droid (constantly {})})
+      (attach-resolvers {:resolve-hero    db/resolve-hero
+                         :resolve-human   db/resolve-human
+                         :resolve-droid   db/resolve-droid
+                         :resolve-friends db/resolve-friends})
       schema/compile))
