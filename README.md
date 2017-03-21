@@ -2,6 +2,8 @@
 
 Experiment [walmartlabs/lacinia](https://github.com/walmartlabs/lacinia) library, a GraphQL implementation in pure Clojure.
 
+See [blog post](https://kipalog.com/posts/try-lacinia).
+
 ## Usage
 
 Start web service at port 3000
