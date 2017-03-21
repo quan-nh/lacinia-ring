@@ -1,6 +1,6 @@
 # try-lacinia
 
-A Clojure library designed to ... well, that part is up to you.
+Experiment [walmartlabs/lacinia](https://github.com/walmartlabs/lacinia) library, a GraphQL implementation in pure Clojure.
 
 ## Usage
 
