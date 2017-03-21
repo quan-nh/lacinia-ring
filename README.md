@@ -11,7 +11,9 @@ lein ring server-headless
 
 Then, send POST request to `/graphql` url with query data
 ```sh
-http POST http://localhost:3000/graphql Content-Type:application/graphql <<< '{ hero(episode: NEWHOPE) { movies: appears_in } }'
+http POST http://localhost:3000/graphql \
+	 Content-Type:application/graphql \
+	 <<< '{ hero(episode: NEWHOPE) { movies: appears_in } }'
 
 HTTP/1.1 200 OK
 Content-Length: 56
