@@ -1,6 +1,5 @@
 (ns try-lacinia.core
-  (:require [ring.adapter.jetty :refer [run-jetty]]
-            [ring.middleware.json :refer [wrap-json-response]]
+  (:require [ring.middleware.json :refer [wrap-json-response]]
             [ring.util.response :refer [response]]
             [ring.util.request :refer [body-string]]
             [compojure.core :refer [POST defroutes]]
@@ -17,6 +16,4 @@
 
 (def app
   (-> my-routes
-      wrap-json-response
-      (run-jetty {:port 8080})))
-
+      wrap-json-response))
