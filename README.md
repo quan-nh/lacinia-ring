@@ -11,26 +11,53 @@ Start web service at port 3000
 lein ring server-headless
 ```
 
-Then, send POST request to `/graphql` url with query data
+Then, send POST requests to `/graphql` url with query data
 ```sh
 http POST http://localhost:3000/graphql \
 	 Content-Type:application/graphql \
-	 <<< '{ hero(episode: NEWHOPE) { movies: appears_in } }'
-
-HTTP/1.1 200 OK
-Content-Length: 56
-Content-Type: application/json; charset=utf-8
-Date: Tue, 21 Mar 2017 14:34:53 GMT
-Server: Jetty(9.2.10.v20150310)
-
+	 <<< '{
+            hero {
+              id
+              name
+              friends {
+                name
+              }
+            }
+          }'
+-->
 {
     "data": {
         "hero": {
-            "movies": [
-                "NEWHOPE", 
-                "EMPIRE", 
-                "JEDI"
-            ]
+            "friends": [
+                {
+                    "name": "Luke Skywalker"
+                }, 
+                {
+                    "name": "Han Solo"
+                }, 
+                {
+                    "name": "Leia Organa"
+                }
+            ], 
+            "id": "2001", 
+            "name": "R2-D2"
+        }
+    }
+}
+
+
+http POST http://localhost:3000/graphql \
+	 Content-Type:application/graphql \
+	 <<< '{
+            human(id: "1001") {
+              name
+            }
+          }'
+-->
+{
+    "data": {
+        "human": {
+            "name": "Darth Vader"
         }
     }
 }
