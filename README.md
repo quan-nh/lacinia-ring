@@ -2,7 +2,7 @@
 
 Playing with [walmartlabs/lacinia](https://github.com/walmartlabs/lacinia) library, a GraphQL implementation in pure Clojure.
 
-See [blog post](https://kipalog.com/posts/try-lacinia) for detail.
+See [this post](https://kipalog.com/posts/try-lacinia) for more details.
 
 ## Usage
 
@@ -24,7 +24,7 @@ http POST http://localhost:3000/graphql \
               }
             }
           }'
--->
+==>
 {
     "data": {
         "hero": {
@@ -53,7 +53,7 @@ http POST http://localhost:3000/graphql \
               name
             }
           }'
--->
+==>
 {
     "data": {
         "human": {
