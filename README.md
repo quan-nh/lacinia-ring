@@ -2,8 +2,6 @@
 
 Playing with [walmartlabs/lacinia](https://github.com/walmartlabs/lacinia) library, a GraphQL implementation in pure Clojure.
 
-See [this post](https://kipalog.com/posts/try-lacinia) for more details.
-
 ## Usage
 
 Start web service at port 3000
@@ -13,17 +11,10 @@ lein ring server-headless
 
 Then, send POST requests to `/graphql` url with query data
 ```sh
-http POST http://localhost:3000/graphql \
-	 Content-Type:application/graphql \
-	 <<< '{
-            hero {
-              id
-              name
-              friends {
-                name
-              }
-            }
-          }'
+curl http://localhost:3000/graphql \
+  -X POST \
+  -H "Content-Type: application/graphql" \
+  -d '{hero {id name friends {name}}}'
 ==>
 {
     "data": {
@@ -46,13 +37,10 @@ http POST http://localhost:3000/graphql \
 }
 
 
-http POST http://localhost:3000/graphql \
-	 Content-Type:application/graphql \
-	 <<< '{
-            human(id: "1001") {
-              name
-            }
-          }'
+curl http://localhost:3000/graphql \
+  -X POST \
+  -H "Content-Type: application/graphql" \
+  -d '{human(id: "1001") {name}}'
 ==>
 {
     "data": {
@@ -62,6 +50,8 @@ http POST http://localhost:3000/graphql \
     }
 }
 ```
+
+GraphiQL services at http://localhost:3000/
 
 ## License
 

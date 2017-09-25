@@ -1,8 +1,9 @@
 (ns try-lacinia.core
   (:require [ring.middleware.json :refer [wrap-json-response]]
-            [ring.util.response :refer [response]]
+            [ring.middleware.resource :refer [wrap-resource]]
+            [ring.util.response :as resp :refer [response]]
             [ring.util.request :refer [body-string]]
-            [compojure.core :refer [POST defroutes]]
+            [compojure.core :refer [GET POST defroutes]]
             [com.walmartlabs.lacinia :as ql]
             [try-lacinia.schema :as schema]))
 
@@ -12,8 +13,10 @@
                         nil nil)))
 
 (defroutes my-routes
+           (GET "/" [] (resp/redirect "/index.html"))
            (POST "/graphql" request (handler request)))
 
 (def app
   (-> my-routes
+      (wrap-resource "graphiql")
       wrap-json-response))
