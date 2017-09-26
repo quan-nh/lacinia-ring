@@ -1,0 +1,15 @@
+{:objects
+ {:ping
+  {:description "Captures a message and a timestamp. This is used when testing Subscriptions."
+   :fields      {:message   {:type (non-null String)}
+                 :timestamp {:type (non-null Int)}}}}
+
+ :subscriptions
+ {:ping
+  {:type        :ping
+   :description "Sends the provided message a particular number of times, as a subscription."
+   :stream      :stream-ping
+   :args
+                {:count   {:type    Int
+                           :default 5}
+                 :message {:type String}}}}}
