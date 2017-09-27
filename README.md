@@ -6,7 +6,7 @@ Playing with [walmartlabs/lacinia](https://github.com/walmartlabs/lacinia) libra
 
 Start web service at port 3000
 ```sh
-lein ring server-headless
+lein run
 ```
 
 Then, send POST requests to `/graphql` url with query data
