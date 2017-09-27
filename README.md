@@ -9,7 +9,10 @@ Start web service at port 3000
 lein run
 ```
 
-Then, send POST requests to `/graphql` url with query data
+GraphiQL services at http://localhost:3000/
+
+### Query, Mutation
+Send POST requests to `/graphql` url with query data
 ```sh
 curl http://localhost:3000/graphql \
   -X POST \
@@ -51,7 +54,12 @@ curl http://localhost:3000/graphql \
 }
 ```
 
-GraphiQL services at http://localhost:3000/
+### Subscription
+
+Send query message to `ws://localhost:3000/graphql-ws`
+```
+subscription { ping (count: 4 message: "test") { message }}
+```
 
 ## License
 
