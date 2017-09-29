@@ -8,5 +8,6 @@
                  [http-kit "2.2.0"]
                  [ring/ring-json "0.4.0"]
                  [compojure "1.6.0"]
+                 [cheshire "5.8.0"]
                  [com.walmartlabs/lacinia "0.21.0"]]
   :main try-lacinia.core)

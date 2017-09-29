@@ -8,9 +8,9 @@
   (swap! *ping-subscribes inc)
   (let [runnable ^Runnable (fn []
                              (dotimes [i count]
-                               (Thread/sleep 500)
                                (source-stream {:message   (str message " #" (inc i))
-                                               :timestamp (System/currentTimeMillis)}))
+                                               :timestamp (System/currentTimeMillis)})
+                               (Thread/sleep 1000))
 
                              (source-stream nil))]
     (.start (Thread. runnable "stream-ping-thread")))
